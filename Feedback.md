@@ -3,3 +3,6 @@ M1 Feedback
 * Rotated ERD is hard to read.
 * Aggregation and Recursion is not implemented in ERD (-0.5)
 * All M-to-M relationships should be table (-0.25)
+
+M2 Feedback
+* Few entities are missing from EER. 
