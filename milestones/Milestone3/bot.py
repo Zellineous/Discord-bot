@@ -13,8 +13,8 @@ import database as db
 # environment variables
 token = os.environ['DISCORD_TOKEN']
 server = os.environ['DISCORD_GUILD']
-server_id = os.environ['SERVER_ID']  # optional
-channel_id = os.environ['CHANNEL_ID']  # optional
+#server_id = os.environ['SERVER_ID']  # optional
+#channel_id = os.environ['CHANNEL_ID']  # optional
 
 # database connection
 # secret keys related to your database must be updated. Otherwise, it won't work
@@ -51,11 +51,46 @@ async def on_message(message):
         msg = message.content.lower()
         if "milestone3" in msg:
             response = "I am alive. Signed: 'your bot'"
+        if "/station" in msg:
+            s = msg
+            m = s[9:13]
+            response = db.q1(m)
+        if "/salary employee" in msg:
+            w = msg
+            o = w[17:21]
+            p = w[22:27]
+            response = db.q2(o,p)
+        if "/trips-routes" in msg:
+            s = msg
+            y = s[14:17]
+            response = db.q3(y)
+        if "/passenger" in msg:
+            s = msg
+            r = s[11:19]
+            response = db.q4(r)
+        if "/avg-trips" in msg:
+            s = msg
+            l = s[11:15]
+            k = s[16:20]
+            response = db.q5(l,k)
+        if "/route-less-more" in msg:
+            s = msg
+            f = s[17:19]
+            g = s[20:22]
+            response = db.q6(f,g)
+        if "/trips-station" in msg:
+            s = msg
+            d = s[15:16]
+            response = db.q7(d)
     if response:
         # bot sends response to the Discord API and the response is show
         # on the channel from your Discord server that triggered this method.
         embed = discord.Embed(description=response)
         await message.channel.send(embed=embed)
+        embed = None
+        
+        
+        
 
 
 try:
